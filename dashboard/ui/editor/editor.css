@@ -1,0 +1,18 @@
+.tox-tinymce {
+  border-radius: 5px !important;
+  margin: 10px 5px !important;
+  padding: 5px;
+}
+.tox-tinymce img{
+  max-width: 500px;
+  margin: auto;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    color:#fff;
+    background: #444;
+  }
+  .mce-content-body[data-mce-placeholder]:not(.mce-visualblocks)::before{
+    color:#999;
+  }
+}
