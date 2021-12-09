@@ -1,0 +1,29 @@
+<div class="post <{IF IS_UNAVAILABLE_POST}>unpublished_post<{END IF}><{IF IS_HIDDEN_POST}>unlisted_post<{END IF}><{IF IS_LISTED_POST}>listed_post<{END IF}>">
+  <a class="post_link" href="<{POST_LINK}>">
+  <div class="container">
+    <div class="table_lg table_md table_sm">
+      <div class="cell post_contents">
+          <div class="top">
+              <div class="post_title"><{POST_TITLE}></div>
+              <div class="meta">
+                  <{POST_DATE_TEXT}> / <{POST_CATEGORY_TEXT}>
+              </div>
+          </div>
+          <div class="short_introduction">
+            <{POST_INTRODUCTION}>
+          </div>
+      </div>
+      <{IF POST_IMAGE}>
+  	  <div class="cell post_banner"><div class="image_wrapper"><img src="<{POST_IMAGE}>" alt="<{POST_TITLE}>"/></div></div>
+      <{END IF}>
+    </div>
+  </div>
+  </a>
+  <{IF IS_ADMIN}>
+    <div style="text-align:center">
+        <a href="<{NEW_POST_LINK}>"><button>New post</button></a>
+        <a href="<{UPDATE_POST_LINK}>"><button>Edit post</button></a>
+        <a href="<{DELETE_POST_LINK}>"><button>Delete post</button></a>
+    </div>
+  <{END IF}>
+</div>

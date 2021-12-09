@@ -1,0 +1,36 @@
+<div class="post listed_post">
+  <div class="container">
+      <div class="top">
+          <a class="post_link" href="<{POST_LINK}>" title="Click here to view this post and leave comments">
+            <div class="post_title"><{POST_TITLE}></div>
+          </a>
+          <div class="meta">
+             <a href="<{POST_DATE_LINK}>">
+               <span class="date_cal">
+                 <{POST_DATE_TEXT}>
+               </span>
+             </a>
+          </div>
+      </div>
+      <div class="content">
+          <{POST_CONTENT}>
+      </div>
+      <div class="info">
+          <div>
+              Posted by <{POST_POSTER_TEXT}> in <a class="category" href="<{POST_CATEGORY_LINK}>"><{POST_CATEGORY_TEXT}></a>
+          </div>
+          <div>
+              <{POST_TAGS}>
+          </div>
+          <{POST_SOCIAL_BUTTONS}>
+      </div>
+      <{IF IS_ADMIN}>
+      <div style="text-align:center">
+          <a href="/dash/view/front/NewPost"><button>New post</button></a>
+          <a href="/dash/view/front/UpdatePost/?data=<{FRIENDLY_NAME}>"><button>Edit post</button></a>
+          <a href="/dash/view/front/DeletePost/?data=<{FRIENDLY_NAME}>"><button>Delete post</button></a>
+      </div>
+      <{END IF}>
+
+  </div>
+</div>
