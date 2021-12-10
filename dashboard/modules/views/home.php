@@ -2,7 +2,7 @@
 class MainView extends DashView{
 
   public function getName(){
-    return "DASH Board";
+    return "DASH dashboard";
   }
 
   public function requiresLogin(){
@@ -24,7 +24,7 @@ class MainView extends DashView{
 
     <div class="group left"><div class="title">Dashboard<div id="date"> | <span></span></div></div>
       <p style="font-size:110%;margin:10px;">
-        Welcome to your DASH Board, <?php echo $user->getUsername(); ?>. From here, you can manage
+        Welcome to your DASH dashboard, <?php echo $user->getUsername(); ?>. From here, you can manage
         everything on this DASH installation, create, edit and delete content and much more.
       </p>
       <div class="row">
