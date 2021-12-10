@@ -1,6 +1,6 @@
 <?php
 
-class MainView extends DashView{
+class MainView extends DashView {
 
   function apacheModLoaded($s) {
     if (array_search($s, apache_get_modules()) !== false) {
@@ -50,7 +50,7 @@ class MainView extends DashView{
 
   public function generateView($dashboard){
 
-    echo '<h1>DASH Board reports and settings</h1>';
+    echo '<h1>DASH dashboard reports and settings</h1>';
 
     echo '<div class="tab_container">';
     echo '<ul class="tabs"><li><a>Basics</a></li></ul>';
