@@ -9,8 +9,7 @@
 * first to check if it is a keyword (precedence of keywords).
 */
 
-class DashTemplateParser extends DashCoreClass
-{
+class DashTemplateParser extends DashCoreClass {
     const STRING_TYPE = 0;
     const VAR_TYPE = 1;
     const IF_TYPE = 2;
@@ -23,8 +22,7 @@ class DashTemplateParser extends DashCoreClass
     private $inside_keyword = false;
     private $var_list = array();
 
-    public function __construct($string)
-    {
+    public function __construct($string) {
         $this->content = $string;
     }
 
@@ -32,15 +30,13 @@ class DashTemplateParser extends DashCoreClass
       return $this->var_list;
     }
 
-    public function parse()
-    {
+    public function parse() {
         //Returns an AST
         return $this->toAST();
     }
 
-    public function traverseAST($current, $list)
-    {
-        //Transforms an AST to a string
+    public function traverseAST($current, $list) {
+        //Transforms an AST to a string after running through it
         $output = "";
 
         while ($current != null) {
@@ -77,30 +73,30 @@ class DashTemplateParser extends DashCoreClass
                     $output .= "DashTemplateParser: KEYWORD NOT FOUND";
                     break;
             }
+            //Move to the next location
             $current = $current->right;
         }
 
         return $output;
     }
 
-    private function toAST()
-    {
-        $root = new DashAST();
-        $last = $root;
+    private function toAST() {
+      //The main converter from the original string to an AST which can be traversed quickly
+      $root = new DashAST();
+      $last = $root;
 
-        $escaped = false;
+      $escaped = false;
 
-        //Transform everything to an AST.
-        while ($this->pc < strlen($this->content)) {
-            $last->right = $this->toNode();
-            $last = $last->right;
-        }
+      //Transform everything to an AST.
+      while ($this->pc < strlen($this->content)) {
+        $last->right = $this->toNode();
+        $last = $last->right;
+      }
 
-        return $root;
+      return $root;
     }
 
-    private function toNode()
-    {
+    private function toNode() {
         $string = "";
         //This is where the logic takes place, transform the string to a node
         while ($this->pc < strlen($this->content)) {
@@ -135,8 +131,7 @@ class DashTemplateParser extends DashCoreClass
         }
     }
 
-    private function parseKeyword()
-    {
+    private function parseKeyword() {
         //Key words occur when we get a <{
         $ast = new DashAST();
         $word = $this->getNextWord();
@@ -182,6 +177,7 @@ class DashTemplateParser extends DashCoreClass
                 }
             }
         } elseif (strtolower($word) == "end") {
+          //End chunk
             $word = $this->getNextWord();
             if (strtolower($word) == "if") {
                 $ast = new DashAST();
@@ -209,8 +205,7 @@ class DashTemplateParser extends DashCoreClass
         return $ast;
     }
 
-    private function getNextCharacter($pc)
-    {
+    private function getNextCharacter($pc) {
         //Gets the next character without incrementing the program counter
         $len = strlen($this->content);
         if ($pc + 1 < $len) {
@@ -219,8 +214,7 @@ class DashTemplateParser extends DashCoreClass
         return $this->content[$pc];
     }
 
-    private function getNextWord()
-    {
+    private function getNextWord() {
         $ch = "";
         $next = "";
         $word = "";

@@ -1,5 +1,6 @@
 <?php
 
+//The front end manager for the content of the DASH installation
 class DashContentManager extends DashCoreClass{
 
   private $dashQuery = null;
@@ -72,6 +73,7 @@ class DashContentManager extends DashCoreClass{
     return $this->categories[$id];
   }
 
+  //Gets a category object from it's name
   public function getCategoryFromName($name){
     $this->getCategories();
     foreach($this->categories as $id => $cat){
@@ -82,6 +84,7 @@ class DashContentManager extends DashCoreClass{
     return null;
   }
 
+  //Gets a category object from it's friendly name
   public function getCategoryFromFriendlyName($name){
     $this->getCategories();
     foreach($this->categories as $id => $cat){
@@ -92,6 +95,7 @@ class DashContentManager extends DashCoreClass{
     return null;
   }
 
+  //Returns all users of the installation
   public function getUsers(){
     //Gets and stores all categories
     if($this->users == null){

@@ -1,5 +1,6 @@
 <?php
 
+//Simple class to represent a category
 class DashCategory extends DashCoreClass{
 
   private $id = -1;
