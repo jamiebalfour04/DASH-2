@@ -161,12 +161,13 @@
         text: 'Color',
         getSubmenuItems: function(){return "forecolor backcolor";}
       });
+
     },
     mobile: {
       menubar: false
     },
-		toolbar1 : "undo redo | code | fullscreen",
-		toolbar3 : "image media link | bullist numlist | styleselect ",
+		toolbar1 : "undo redo | code | fullscreen | styleselect",
+		toolbar3 : "image media link | bullist numlist | alignleft aligncenter alignright alignjustify",
 
     images_upload_url : "<?php echo DASHBOARD_PATH . 'upload.php'?>",
 
