@@ -1,4 +1,4 @@
-# dash2
+# DASH
 
 DASH or Dash: Adaptable, Secure and High performance CMS is a new CMS I use on my personal website as well as many of the websites I build and host. It's name gives an idea of what it is for and how it can be used. 
 
