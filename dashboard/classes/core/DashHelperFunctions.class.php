@@ -18,7 +18,8 @@ class DashHelperFunctions {
       $friendly_name = str_replace("&39;", "", $friendly_name);
       $friendly_name = html_entity_decode(urldecode($friendly_name));
 
-      $friendly_name = self::removeUnsavouryCharacters($friendly_name, array("@", "!", "?", "#", "$", "%", "^", "&", "'", '"', ",", "[", "]", "(", ")", "*", ":", ";", "."));
+      $friendly_name = self::removeUnsavouryCharacters($friendly_name, array("@", "!", "?", "#", "$", "%", "^", "&", "'", '"', "’", ",", "[", "]", "(", ")", "*", ":", ";", "."));
+
 
       $friendly_name = strip_tags($friendly_name);
       $friendly_name = str_replace("39%3B", "", $friendly_name);
