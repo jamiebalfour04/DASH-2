@@ -1,0 +1,71 @@
+#This file is part of Dash. If you can suggest an improvement to make it more efficient, please suggest it to me.
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	#Individual posts
+
+	RewriteRule ^(dashboard/?)(.*) index.php/$2?visit_dashboard=true [L]
+
+	RewriteRule ^(posts/?)$ index.php	[L]
+	RewriteRule ^(posts/([^/]+)/?)$ index.php?post=$2	[L]
+
+	RewriteRule ^(restricted/([^/]+)/?)$ index.php?restricted=$2	[L]
+
+	#By poster
+	RewriteRule ^(poster/([^/]+)/categories/([^/]+)/pages/([0-9]+)/?)$ index.php?poster=$2&category=$3&page=$4 [L]
+	RewriteRule ^(poster/([^/]+)/tag/([^/]+)/pages/([0-9]+)/?)$ index.php?poster=$2&tag=$3&page=$4 [L]
+
+	RewriteRule ^(poster/([^/]+)/categories/([^/]+)/?)$ index.php?poster=$2&category=$3 [L]
+	RewriteRule ^(poster/([^/]+)/tag/([^/]+)/?)$ index.php?poster=$2&tag=$3 [L]
+	RewriteRule ^(poster/([^/]+)/pages/([0-9]+)/?)$ index.php?poster=$2&page=$3 [L]
+
+	RewriteRule ^(poster/([^/]+)/?)$ index.php?poster=$2 [L]
+
+	#Categories
+	RewriteRule ^(categories/([^/]+)/poster/([^/]+)/pages/([0-9]+)/?)$ index.php?category=$2&poster=$3&page=$4 [L]
+	RewriteRule ^(categories/([^/]+)/tag/([^/]+)/pages/([0-9]+)/?)$ index.php?category=$2&tag=$3&page=$4 [L]
+
+	RewriteRule ^(categories/([^/]+)/poster/([^/]+)/?) index.php?category=$2&poster=$3 [L]
+	RewriteRule ^(categories/([^/]+)/tag/([^/]+)/?)$ index.php?category=$2&tag=$3 [L]
+	RewriteRule ^(categories/([^/]+)/pages/([0-9]+)/?)$ index.php?category=$2&page=$3 [L]
+
+	RewriteRule ^(categories/([^/]+)/?)$ index.php?category=$2 [L]
+
+	#Tags
+	RewriteRule ^(tag/([^/]+)/pages/([0-9]+)/?)$ index.php?tag=$2&page=$3 [L]
+	RewriteRule ^(tag/([^/]+)/?)$ index.php?tag=$2 [L]
+
+
+	#Page number
+	RewriteRule ^(pages/([0-9]+)/?)$ index.php?page=$2 [L]
+
+	#Search
+	RewriteRule ^(search/([^/]+)/pages/([0-9]+)/?)$ index.php?qry=$2&page=$3 [L]
+	RewriteRule ^(search/([^/]+)/?)$ index.php?qry=$2 [L]
+
+	#Dates
+	RewriteRule ^(date/([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9])/?)$ index.php?date=$2 [L]
+	RewriteRule ^(date/([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9])/pages/([0-9]+)/?)$ index.php?date=$2&page=$3 [L]
+
+	#Date ranges
+	RewriteRule ^(range/([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]):([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9])/?)$ index.php?start=$2&end=$3 [L]
+
+	RewriteRule (poster/?)$ index.php	[L]
+	RewriteRule (pages/?)$ index.php	[L]
+	RewriteRule (tag/?)$ index.php	[L]
+	RewriteRule (categories/?)$ index.php	[L]
+	RewriteRule (search/?)$ index.php	[L]
+	RewriteRule (date/?)$ index.php	[L]
+	RewriteRule (range/?)$ index.php	[L]
+
+	#Fixers
+	RewriteRule (posts/?)$ index.php/ [L]
+	RewriteRule (posters/?)$ index.php/ [L]
+	RewriteRule (categories/?)$ index.php/ [L]
+	RewriteRule (tag/?)$ index.php/ [L]
+	RewriteRule (pages/?)$ index.php/ [L]
+	RewriteRule (search/?)$ index.php/ [L]
+	RewriteRule (date/?)$ index.php/ [L]
+	RewriteRule (range/?)$ index.php/ [L]
+
+</IfModule>

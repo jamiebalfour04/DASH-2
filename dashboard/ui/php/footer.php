@@ -12,7 +12,7 @@
   <div id="menu_unselectable"></div>
 </div>
 <div id="ajax_loader">
-  <img src="/dash_old//dashboard/images/ajax_black.gif" alt="Loading">
+  <img src="<?php echo DASHBOARD_PATH; ?>ui/images/loader.gif" alt="Loading">
 </div>
 <?php
 require_once dirname(__FILE__).'/../editor/tinymce/main.php';

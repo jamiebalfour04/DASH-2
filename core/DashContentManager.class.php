@@ -173,6 +173,25 @@ class DashContentManager extends DashCoreClass{
   public function fetchPostByName($friendlyName){
     $query = 'SELECT * FROM ' . $this->getPostsTableString() . ' WHERE friendly_name = :friendly_name';
 
+    $newSearch = "";
+
+    if($this->showUnavailablePosts == false || $this->showHiddenPosts == false){
+      $newSearch = " AND ";
+    }
+
+    if($this->showUnavailablePosts == false){
+      $newSearch .= ' status != 1';
+    }
+
+    if($this->showHiddenPosts == false){
+      if($newSearch != ""){
+        $newSearch .= ' AND';
+      }
+      $newSearch .= ' status != 0';
+    }
+
+    $query .= $newSearch;
+
     $stmt = $this->con->prepare($query);
 
     $stmt->execute(array(":friendly_name" => $friendlyName));
@@ -235,7 +254,7 @@ class DashContentManager extends DashCoreClass{
     //Checking to see if the user is searching for posts in a category
     if(isset($_GET['qry'])){
     	$qry = $_GET['qry'];
-      $query->addSearchQuery(htmlentities($_GET['qry']));
+      $query->addSearchQuery($_GET['qry']);
     }
     //Checking to see if the user is searching for posts in a category
     if(isset($_GET['category'])){
@@ -267,6 +286,7 @@ class DashContentManager extends DashCoreClass{
 	  $values['POST_CONTENT'] = $post->getContent();
     $values['POST_INTRODUCTION'] = htmlentities($post->getIntroduction());
 	  $values['POST_TAGS'] = $this->generateTagString($post->getTags());
+    $values['POST_CLASSES'] = $post->getClasses();
 
     return $values;
   }

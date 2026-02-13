@@ -13,7 +13,9 @@ class DashPost extends DashCoreClass {
   private $category_obj = null;
   private $poster = "";
   private $tags = "";
+  private $classes = "";
   private $status = 0;
+
 
 
   public function getFriendlyName(){
@@ -54,6 +56,10 @@ class DashPost extends DashCoreClass {
 
   public function getTags(){
     return $this->tags;
+  }
+
+  public function getClasses(){
+    return $this->classes;
   }
 
   public function getStatus(){

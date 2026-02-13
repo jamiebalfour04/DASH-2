@@ -1192,13 +1192,13 @@ label input.dropdown {
   padding: 10px;
   border-radius: 5px;
   position: absolute;
-  height: 50px;
+  height: 100px;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
-  width: 50px;
+  width: 100px;
 }
 
 /*Box-sizing: border-box*/
@@ -2032,7 +2032,7 @@ form {
   }
 
   #ajax_loader img {
-    left: 180px;
+    left: 220px;
   }
 
   #menu_bar {

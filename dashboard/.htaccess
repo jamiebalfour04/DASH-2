@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^(view|action|get|plugin_view|plugin_action)/([A-z-0-9]+)/([A-z0-9-]+)/? ?mode=$1&page=$2&data=$3 [L,QSA]
+RewriteRule ^(view|action|get|plugin_view|plugin_action)/([A-z-0-9]+)/? ?mode=$1&page=$2 [L,QSA]
+RewriteRule ^(tmp)/(.+)/? ?tmp=$2 [L]

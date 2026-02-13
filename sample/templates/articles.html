@@ -1,4 +1,4 @@
-<div class="post <{IF IS_UNAVAILABLE_POST}>unpublished_post<{END IF}><{IF IS_HIDDEN_POST}>unlisted_post<{END IF}><{IF IS_LISTED_POST}>listed_post<{END IF}>">
+<div class="post <{CLASSES}> <{IF IS_UNAVAILABLE_POST}>unpublished_post<{END IF}><{IF IS_HIDDEN_POST}>unlisted_post<{END IF}><{IF IS_LISTED_POST}>listed_post<{END IF}>">
   <a class="post_link" href="<{POST_LINK}>">
   <div class="container">
     <div class="table_lg table_md table_sm">
@@ -21,9 +21,9 @@
   </a>
   <{IF IS_ADMIN}>
     <div style="text-align:center">
-        <a href="<{NEW_POST_LINK}>"><button>New post</button></a>
-        <a href="<{UPDATE_POST_LINK}>"><button>Edit post</button></a>
-        <a href="<{DELETE_POST_LINK}>"><button>Delete post</button></a>
+      <a href="/dash/dashboard/view/new-content/"><button>New post</button></a>
+      <a href="/dash/dashboard/view/edit-content/<{FRIENDLY_NAME}>"><button>Edit post</button></a>
+      <a href="/dash/dashboard/view/delete-content/<{FRIENDLY_NAME}>"><button>Delete post</button></a>
     </div>
   <{END IF}>
 </div>

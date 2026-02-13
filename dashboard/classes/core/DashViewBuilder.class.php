@@ -4,11 +4,12 @@ class DashViewBuilder {
     //Basic reusable function to generate a pill label
 
     public static function BoolToCheckBox($value) {
-        $checked = "";
-        if ($value == "true" || $value == "1" || $value == "on") {
-            $checked = ' checked="checked"';
-        }
-        return $checked;
+      //Converts a boolean value to a checkbox value
+      $checked = "";
+      if ($value == "true" || $value == "1" || $value == "on") {
+        $checked = ' checked="checked"';
+      }
+      return $checked;
     }
 
     private static function generateItem($is_title, $text, $link, $is_active, $has_glyph = true) {

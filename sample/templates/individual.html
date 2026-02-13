@@ -1,4 +1,4 @@
-<div class="post listed_post">
+<div class="post <{CLASSES}> listed_post">
   <div class="container">
       <div class="top">
           <div class="meta">
@@ -23,9 +23,8 @@
       </div>
       <{IF IS_ADMIN}>
       <div style="text-align:center">
-          <a href="/dash/view/front/NewPost"><button>New post</button></a>
-          <a href="/dash/view/front/UpdatePost/?data=<{FRIENDLY_NAME}>"><button>Edit post</button></a>
-          <a href="/dash/view/front/DeletePost/?data=<{FRIENDLY_NAME}>"><button>Delete post</button></a>
+        <a href="/dash/dashboard/view/edit-content/<{FRIENDLY_NAME}>"><button>Edit content</button></a>
+        <a href="/dash/dashboard/view/delete-content/<{FRIENDLY_NAME}>"><button>Delete content</button></a>
       </div>
       <{END IF}>
 

@@ -20,27 +20,26 @@ class DashSearchQuery extends DashCoreClass{
   }
 
   private static function generateSearchArray($query){
-    $inQuote = false;
     $arr = array();
     $current = "";
     $i = 0;
     //Iterate the whole query
     while ($i < strlen($query)) {
       $ch = $query[$i];
-      //If $ch is a quote, we are inside a quote next
-      if ($ch == '"') {
-        $inQuote = !$inQuote;
-        if (!$inQuote) {
-          array_push($arr, $current);
-          $current = "";
+      if($ch == '"'){
+        if($current != ""){
+          array_push($arr, htmlentities($current));
         }
-        //We only care for spaces inside quote marks
-      } elseif ($ch == " " && !$inQuote) {
-        //If we meet a space and the $current word is not nothing, then put it in to the array
-        if ($current != "") {
-          array_push($arr, $current);
-          $current = "";
+        $current = "";
+        $i++;
+        $ch = $query[$i];
+        while($ch != '"' && $i < strlen($query)){
+          $current .= $ch;
+          $i++;
+          $ch = $query[$i];
         }
+        array_push($arr, htmlentities($current));
+        $current = "";
       } else {
         //Add the current character to the current word
         $current .= $ch;
@@ -49,7 +48,7 @@ class DashSearchQuery extends DashCoreClass{
       $i++;
       //Push the last word in to the array
       if ($i == strlen($query) && $current != "") {
-        array_push($arr, $current);
+        array_push($arr, htmlentities($current));
       }
     }
 
@@ -141,6 +140,13 @@ class DashSearchQuery extends DashCoreClass{
       $newSearch .= 'status != 0';
     }
 
+    if(!($this->showUnavailablePosts || $this->showHiddenPosts)){
+      if($newSearch != ""){
+        $newSearch .= ' AND ';
+      }
+      $newSearch .= 'date < FROM_UNIXTIME('.time().')';
+    }
+
     if($newSearch != ""){
       $query .= ' WHERE ' . $newSearch;
     }
@@ -166,7 +172,6 @@ class DashSearchQuery extends DashCoreClass{
     while($row = $stmt->fetchObject("DashPost")){
       array_push($output, $row);
     }
-
 
     return $output;
   }
