@@ -6,13 +6,15 @@
     private $email = "";
     private $username = "";
     private $role = 0;
+    private $display_name;
 
 
     //Directly construct from database
-    public function setData($user_id, $username, $email, $role){
+    public function setData($user_id, $username, $email, $display_name, $role){
       $this->user_id = $user_id;
       $this->username = $username;
       $this->email = $email;
+      $this->display_name = $display_name;
       $this->role = $role;
     }
 
@@ -22,6 +24,10 @@
 
     public function getUsername(){
       return $this->username;
+    }
+
+    public function getDisplayName(){
+      return $this->display_name;
     }
 
     public function getEmailAddress(){

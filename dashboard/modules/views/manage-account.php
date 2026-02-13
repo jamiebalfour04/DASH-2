@@ -25,6 +25,7 @@ class MainView extends DashView{
     $form->setTitle("Manage your DASH account");
     $form->isAjax(true);
 
+    $form->addPill("Display name", "text", "display_name", "Display name", "", "", $dashboard->getDashboardUser()->getDisplayName());
     $form->addPill("Your email address", "text", "email", "Your email address", "", "", $dashboard->getDashboardUser()->getEmailAddress());
     $form->addParagraph("You can update your password by entering a new one here and clicking save.");
     $form->addPill("Change password", "password", "new_password", "Your password");

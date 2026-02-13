@@ -14,6 +14,7 @@ function loginUser($config_name, $user){
     $user['user_id'],
     $user['username'],
     $user['email'],
+    $user['display_name'],
     $user['role']
   );
   $_SESSION['DASH_LOGIN'] = array("CONFIG" => $config_name, "USER" => serialize($user_obj));
