@@ -25,7 +25,7 @@ class MainAction extends DashAction {
     $cm = $dashboard->getContentManager();
     //The user's password has changed
     $password = password_hash($_POST['new_password'], PASSWORD_BCRYPT);
-    $query = 'INSERT INTO '.$cm->getUsersTableString().' (username, email, password, password_salted, role, login_attempts) VALUES (:username, :email, :password, :password_salted, :role, :login_attempts)';
+    $query = 'INSERT INTO '.$cm->getUsersTableString().' (username, email, password, password_salted, display_name, role, login_attempts) VALUES (:username, :email, :password, :password_salted, "", :role, :login_attempts)';
     $values = array(":username" => $_POST['username'], ":email" => $_POST['email'], ":password" => $password, ":password_salted" => 1, ":role" => $_POST['role'], ":login_attempts" => 0);
 
     $stmt = $con->prepare($query);

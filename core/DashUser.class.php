@@ -6,7 +6,7 @@
     private $email = "";
     private $username = "";
     private $role = 0;
-    private $display_name;
+    private $display_name = "";
 
 
     //Directly construct from database
@@ -27,7 +27,11 @@
     }
 
     public function getDisplayName(){
-      return $this->display_name;
+      if ($this->display_name == "") {
+        return $this->username;
+      } else{
+        return $this->display_name;
+      }
     }
 
     public function getEmailAddress(){

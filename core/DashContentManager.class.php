@@ -97,7 +97,7 @@ class DashContentManager extends DashCoreClass{
 
   //Returns all users of the installation
   public function getUsers(){
-    //Gets and stores all categories
+    //Gets and stores all users
     if($this->users == null){
       $this->users = array();
       $query = "";
