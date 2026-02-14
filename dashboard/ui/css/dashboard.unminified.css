@@ -218,6 +218,32 @@
   /* Legacy iOS */
 }
 
+/* oswald-200 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../fonts/oswaldoswald-v53-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* oswald-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/oswaldoswald-v53-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* oswald-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/oswaldoswald-v53-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
 html, h1, h2, h3, h4, h5, h6, textarea, input, button, a, form, ul, ol, li, div, span {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
@@ -282,6 +308,7 @@ a, a:visited {
   color: #000;
   color: var(--heading-color);
   border-radius: 5px;
+  font-family: "Oswald", san-serif;
 }
 
 #container h1 sub {
@@ -863,6 +890,8 @@ p {
   font-weight: 500;
   font-size: 120%;
   border-radius: 4px 4px 0 0;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
 }
 
 .large_group .content {
@@ -946,6 +975,9 @@ p {
   margin: -10px;
   margin-bottom: 20px;
   border-bottom: 1px #000 solid;
+  font-family: "Oswald", sans-serif;
+  text-transform:uppercase;
+  font-weight:100;
 }
 
 #menu_bar ul {
@@ -1122,8 +1154,9 @@ form.window>.title, .group>.title, .large_group>.title {
 form.window>.title {
   border-radius: 3px 3px 0 0;
   font-weight: 500;
-  letter-spacing: 4px;
   text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  font-weight:100;
 }
 
 form.window .window_inner {
