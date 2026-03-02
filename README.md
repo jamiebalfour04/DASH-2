@@ -141,6 +141,10 @@ cd DASH-2</code></pre>
   If you’re building an extension, consider shipping it as a <strong>plugin</strong> rather than editing core.
 </p>
 
+<p>
+  DASH is well-commented and documented, so editing it is painless.
+</p>
+
 <hr>
 
 <h2>Licence</h2>
