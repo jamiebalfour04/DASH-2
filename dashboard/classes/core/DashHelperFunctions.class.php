@@ -2,14 +2,16 @@
 
 class DashHelperFunctions {
   //Strips Emojis so that they aren't inserted into the friendly name of the post
-  private static function removeEmojis($text) {
-      //http://stackoverflow.com/questions/35961245/how-to-remove-all-emoji-from-string-php
-      $regex = '/([0-9|#][\x{20E3}])|[\x{00ae}|\x{00a9}|\x{203C}|\x{2047}|\x{2048}|\x{2049}|\x{3030}|\x{303D}|\x{2139}|\x{2122}|\x{3297}|\x{3299}][\x{FE00}-\x{FEFF}]?|[\x{2190}-\x{21FF}][\x{FE00}-\x{FEFF}]?|[\x{2300}-\x{23FF}][\x{FE00}-\x{FEFF}]?|[\x{2460}-\x{24FF}][\x{FE00}-\x{FEFF}]?|[\x{25A0}-\x{25FF}][\x{FE00}-\x{FEFF}]?|[\x{2600}-\x{27BF}][\x{FE00}-\x{FEFF}]?|[\x{2900}-\x{297F}][\x{FE00}-\x{FEFF}]?|[\x{2B00}-\x{2BF0}][\x{FE00}-\x{FEFF}]?|[\x{1F000}-\x{1F6FF}][\x{FE00}-\x{FEFF}]?/u';
-      return preg_replace($regex, '', $text);
+  private static function removeEmojis($string) {
+
+    // Remove most emoji + symbols outside basic multilingual plane
+
+    return preg_replace('/[\x{10000}-\x{10FFFF}]/u', '', $string);
+
   }
 
   //Creates a URL friendly name for the post.
-  public static function generateFriendlyName($title) {
+  public static function generateFriendlyNameOld($title) {
       $friendly_name = self::removeEmojis($title);
 
       $friendly_name = trim($friendly_name, " ");
@@ -28,6 +30,49 @@ class DashHelperFunctions {
 
       return $friendly_name;
   }
+
+  public static function generateFriendlyName($title) {
+    if ($title === null) {
+        return '';
+    }
+
+    $friendly_name = (string) $title;
+
+    // Decode any HTML entities first
+    $friendly_name = html_entity_decode($friendly_name, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+    // Remove emojis and other supplementary-plane characters
+    $friendly_name = self::removeEmojis($friendly_name);
+
+    // Replace slashes with hyphens before stripping characters
+    $friendly_name = str_replace('/', '-', $friendly_name);
+
+    // Strip HTML tags just in case
+    $friendly_name = strip_tags($friendly_name);
+
+    // Transliterate accented and non-ASCII letters where possible
+    $transliterated = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $friendly_name);
+    if ($transliterated !== false) {
+        $friendly_name = $transliterated;
+    }
+
+    // Lowercase
+    $friendly_name = strtolower($friendly_name);
+
+    // Replace apostrophes rather than leaving odd fragments
+    $friendly_name = str_replace(array("'", "’", '"'), '', $friendly_name);
+
+    // Replace any non letter/number with a hyphen
+    $friendly_name = preg_replace('/[^a-z0-9]+/', '-', $friendly_name);
+
+    // Collapse repeated hyphens
+    $friendly_name = preg_replace('/-+/', '-', $friendly_name);
+
+    // Trim hyphens from both ends
+    $friendly_name = trim($friendly_name, '-');
+
+    return $friendly_name;
+}
 
   //Removes a list of bad characters from a string
   public static function removeUnsavouryCharacters($string, $chars) {
