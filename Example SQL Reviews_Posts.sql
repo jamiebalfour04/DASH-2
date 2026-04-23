@@ -7,10 +7,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `Reviews_Posts`
---
+-- Table: Reviews_Posts
+-- --------------------------------------------------------
 
 CREATE TABLE `Reviews_Posts` (
   `post_id` int(11) NOT NULL,
@@ -25,7 +23,7 @@ CREATE TABLE `Reviews_Posts` (
   `classes` text NOT NULL,
   `friendly_name` varchar(100) NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ALTER TABLE `Reviews_Posts`
   ADD PRIMARY KEY (`post_id`),
@@ -34,28 +32,30 @@ ALTER TABLE `Reviews_Posts`
 
 ALTER TABLE `Reviews_Posts`
   MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
+
 COMMIT;
 
---
--- Table structure for table `Reviews_Categories`
---
+-- --------------------------------------------------------
+-- Table: Reviews_Categories
+-- --------------------------------------------------------
 
 CREATE TABLE `Reviews_Categories` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(50) NOT NULL,
   `friendly_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ALTER TABLE `Reviews_Categories`
   ADD PRIMARY KEY (`category_id`);
 
 ALTER TABLE `Reviews_Categories`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+
 COMMIT;
 
---
--- Table structure for table `Blog_Users`
---
+-- --------------------------------------------------------
+-- Table: Blog_Users
+-- --------------------------------------------------------
 
 CREATE TABLE `Blog_Users` (
   `user_id` int(11) NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE `Blog_Users` (
   `password_salted` tinyint(1) NOT NULL,
   `role` int(11) NOT NULL,
   `login_attempts` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ALTER TABLE `Blog_Users`
   ADD PRIMARY KEY (`user_id`),
@@ -74,4 +74,5 @@ ALTER TABLE `Blog_Users`
 
 ALTER TABLE `Blog_Users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+
 COMMIT;

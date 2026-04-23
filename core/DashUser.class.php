@@ -78,7 +78,7 @@
         return true;
       }
 
-      if($post->getPoster() == $this->getUserId()){
+      if($post->getPoster() == $this->getUserID()){
         return true;
       }
 
